@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WordFrequencyAnalyserImpl implements WordFrequencyAnalyzer {
+public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
 
 
     @Override
@@ -21,11 +21,12 @@ public class WordFrequencyAnalyserImpl implements WordFrequencyAnalyzer {
         return TextProcesserHelper.processText(text).get(word).getFrequency();
     }
 
-    //TODO moet top x zijn. Geeft sortering hoogste of laagste eerst?
     @Override
     public List<WordFrequency> calculateMostFrequentNWords(String text, int n) {
         return TextProcesserHelper.processText(text).values().stream()
-                .sorted(Comparator.comparingInt(WordFrequencyImpl::getFrequency))
+                .sorted(Comparator.comparingInt(WordFrequencyImpl::getFrequency).reversed()
+                        .thenComparing(WordFrequencyImpl::getWord))
+                .limit(n)
                 .collect(Collectors.toList());
     }
 }
