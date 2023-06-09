@@ -18,7 +18,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
 
     @Override
     public int calculateFrequencyForWord(String text, String word) {
-        return TextProcesserHelper.processText(text).get(word).getFrequency();
+        return TextProcesserHelper.processText(text).get(word.toLowerCase()).getFrequency();
     }
 
     @Override

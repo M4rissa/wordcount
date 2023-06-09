@@ -14,7 +14,7 @@ public class TextProcesserHelper {
         Matcher m = WORD_PATTERN.matcher(text);
         while(m.find()) {
             String word = m.group();
-            wordCountMap.computeIfAbsent(word, WordFrequencyImpl::new).count();
+            wordCountMap.computeIfAbsent(word.toLowerCase(), WordFrequencyImpl::new).count();
         }
         return wordCountMap;
     }
