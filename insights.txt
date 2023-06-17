@@ -15,3 +15,7 @@ Dit zou een logische manier zijn om meerdere vragen te kunnen stellen over dezel
 Dit zou ook kunnen door een cache bij te houden van al geparste texten, maar dan moet je als nog op een manier vaststellen dat de text voor de huidige opvraag dezelfde is als de vorige
 wat O(n) runtime heeft, tenzij hetzelfde object wordt meegeleverd.
 Dus alleen als het opnieuw parsen van dezelfde text langzamer is dan O(n) zou dit toegevoegde waarde hebben.
+
+De opdracht vraagt alleen om woorden te maken van een sequence van characters tussen a en z of A en Z.
+Dit is niet per se makkelijker dan ook de letters ä, ó etc ook te includen door als regex te zoeken op WORD_REGEXP = "\\p{L}+",
+maar om aan de opdracht te voldoen heb ik deze vervangen met WORD_REGEXP = "\\p{L}+"

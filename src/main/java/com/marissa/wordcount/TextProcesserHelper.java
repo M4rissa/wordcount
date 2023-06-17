@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class TextProcesserHelper {
 
-    private static final String WORD_REGEXP = "\\p{L}+";
+    private static final String WORD_REGEXP = "[a-zA-Z]+";
     private static final Pattern WORD_PATTERN = Pattern.compile(WORD_REGEXP);
     public static Map<String, WordFrequencyImpl> processText(String text) {
         Map<String, WordFrequencyImpl> wordCountMap = new HashMap<>();

@@ -2,6 +2,7 @@ package com.marissa.wordcount;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
@@ -18,7 +19,9 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
 
     @Override
     public int calculateFrequencyForWord(String text, String word) {
-        return TextProcesserHelper.processText(text).get(word.toLowerCase()).getFrequency();
+        return Optional.ofNullable(TextProcesserHelper.processText(text).get(word.toLowerCase()))
+                .map(WordFrequencyImpl::getFrequency)
+                .orElse(0);
     }
 
     @Override

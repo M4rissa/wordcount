@@ -30,7 +30,7 @@ public class WordFrequencyAnalyzerImplTest {
         //Given
 
         //When
-        int frequency = wordFrequencyAnalyzer.calculateFrequencyForWord(inputText, "x");
+        int frequency = wordFrequencyAnalyzer.calculateFrequencyForWord(inputText, "wordx");
 
 
         //Then
@@ -97,5 +97,17 @@ public class WordFrequencyAnalyzerImplTest {
         assertThat(result.get(0), is(new WordFrequencyImpl("the", 2)));
         assertThat(result.get(1), is(new WordFrequencyImpl("lake", 1)));
         assertThat(result.get(2), is(new WordFrequencyImpl("over", 1)));
+    }
+
+    @Test
+    public void test06_wordFrequencyNotOccuringWord() {
+        //Given
+
+        //When
+        int frequency = wordFrequencyAnalyzer.calculateFrequencyForWord(inputText, "y");
+
+
+        //Then
+        assertThat(frequency, is(0));
     }
 }
