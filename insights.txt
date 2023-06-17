@@ -1,6 +1,6 @@
 Bij het lezen en nadenken over de opdracht kwam de volgende vraag als eerste naar voren:
 In hoeverre wil ik de performance van de individuele methodes optimalizeren?
-Afhankelijk van de methode die aangeroepen wordt kan het namelijk voor die inidviduele methode beter zijn om de text op een andere manier op te slaan/te verwerken.
+Afhankelijk van de methode die aangeroepen wordt kan het namelijk voor die individuele methode beter zijn om de text op een andere manier op te slaan/te verwerken.
 
 Als je wil weten hoe vaak een specifiek woord voorkomt hoef je de text alleen maar door te zoeken op dat specifieke woord,
 terwijl als je het meest voorkomende (een lijst van meest voorkomende) woorden wil opleveren kan dit een heel andere oplossing opleveren als je daarvan de performance optimaliseert.
@@ -8,16 +8,10 @@ terwijl als je het meest voorkomende (een lijst van meest voorkomende) woorden w
 Ik heb gekozen om te focussen op een manier van het document opslaan om aan al deze vragen te kunnen voldoen.
 Dit zorgt meestal voor code die logischer te volgen is, en makkelijker te onderhouden is.
 
-Een logische oplossing voor de frequency van meest voorkomende woord en een lijst van meest voorkomende woorden is inituitief ook redelijk gelijk.
-Is het meest voorkomende woord niet gewoon een mostFrequentNWords voor n=1?
-Grote verschil hierin is dat je niet hoeft te tiebreaker tussen woorden die even frequent zijn,
-omdat je alleen geinteresseerd bent in de hoogste count en niet welk woord daar bij hoort.
-(Hoeveel tijdwinst als je dat dan niet hoeft te doen?)
-
 Verder zou ik me kunnen voorstellen dat iemand meerdere vragen over dezelfde text zou willen stellen en dus in plaats van een methode
 int calculateHighestFrequency(String text); we een class zouden willen maken met als class parameter (String text) en als methode int giveHighestFrequency.
 Dit zou een logische manier zijn om meerdere vragen te kunnen stellen over dezelfde text zonder deze elke keer op nieuw te hoeven parsen.
 
 Dit zou ook kunnen door een cache bij te houden van al geparste texten, maar dan moet je als nog op een manier vaststellen dat de text voor de huidige opvraag dezelfde is als de vorige
 wat O(n) runtime heeft, tenzij hetzelfde object wordt meegeleverd.
-Dus alleen als het opnieuw parsen van dezelfde text langzamer is dan O(n) zou dit zekerweten toegevoegde waarde hebben.
+Dus alleen als het opnieuw parsen van dezelfde text langzamer is dan O(n) zou dit toegevoegde waarde hebben.

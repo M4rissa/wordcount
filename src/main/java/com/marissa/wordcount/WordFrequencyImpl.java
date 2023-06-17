@@ -1,5 +1,7 @@
 package com.marissa.wordcount;
 
+import java.util.Objects;
+
 public class WordFrequencyImpl implements WordFrequency {
 
     private final String word;
@@ -26,5 +28,18 @@ public class WordFrequencyImpl implements WordFrequency {
     @Override
     public int getFrequency() {
         return frequency;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WordFrequencyImpl that = (WordFrequencyImpl) o;
+        return frequency == that.frequency && Objects.equals(word, that.word);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(word, frequency);
     }
 }

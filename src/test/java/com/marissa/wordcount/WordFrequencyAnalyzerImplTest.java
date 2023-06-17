@@ -65,4 +65,37 @@ public class WordFrequencyAnalyzerImplTest {
         assertThat(frequency.get(0).getWord(), is("a"));
         assertThat(frequency.get(1).getWord(), is("aa"));
     }
+
+    @Test
+    public void test04_caseInsensitive() {
+        //Given
+        String text = "word;WORD;word";
+
+        //When
+        int frequency = wordFrequencyAnalyzer.calculateFrequencyForWord(text, "word");
+
+        //Then
+        assertThat(frequency, is(3));
+
+        //When
+        int f2 = wordFrequencyAnalyzer.calculateFrequencyForWord(text, "WORD");
+
+        //Then
+        assertThat(f2, is(3));
+    }
+
+    @Test
+    public void test05_givenTest() {
+        //Given
+        String text = "The sun shines over the lake";
+
+        //When
+        List<WordFrequency> result = wordFrequencyAnalyzer.calculateMostFrequentNWords(text, 3);
+
+        //Then
+        assertThat(result.size(), is(3));
+        assertThat(result.get(0), is(new WordFrequencyImpl("the", 2)));
+        assertThat(result.get(1), is(new WordFrequencyImpl("lake", 1)));
+        assertThat(result.get(2), is(new WordFrequencyImpl("over", 1)));
+    }
 }
